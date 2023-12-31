@@ -1,0 +1,7 @@
+public class Prak101KevinMaleakhi {
+    public static void main(String[] args) {
+        System.out.println("Selamat Pagi, Kevin Maleakhi");
+        System.out.println("Selamat Siang, Kevin Maleakhi");
+        System.out.println("Selamat Malam, Kevin Maleakhi");
+    }
+} 
