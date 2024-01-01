@@ -1,0 +1,55 @@
+package Soal2;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        LinkedList<Negara> negaraList = new LinkedList<>();
+        HashMap<Integer, String> bulanMap = new HashMap<>();
+        bulanMap.put(1, "Januari");
+        bulanMap.put(2, "Februari");
+        bulanMap.put(3, "Maret");
+        bulanMap.put(4, "April");
+        bulanMap.put(5, "Mei");
+        bulanMap.put(6, "Juni");
+        bulanMap.put(7, "Juli");
+        bulanMap.put(8, "Agustus");
+        bulanMap.put(9, "September");
+        bulanMap.put(10, "Oktober");
+        bulanMap.put(11, "November");
+        bulanMap.put(12, "Desember");
+        int jumlahNegara = input.nextInt();
+        input.nextLine();
+
+        for (int i = 0; i < jumlahNegara; i++) {
+            String nama = input.nextLine();
+            String jenisKepemimpinan = input.nextLine();
+            String namaPemimpin = input.nextLine();
+            int tanggalKemerdekaan = 0;
+            int bulanKemerdekaan = 0;
+            int tahunKemerdekaan = 0;
+            if (!jenisKepemimpinan.equalsIgnoreCase("monarki")) {
+                tanggalKemerdekaan = input.nextInt();
+                input.nextLine();
+                bulanKemerdekaan = input.nextInt();
+                input.nextLine();
+                tahunKemerdekaan = input.nextInt();
+                input.nextLine();
+            }
+            negaraList.add(new Negara(nama, jenisKepemimpinan, namaPemimpin, tanggalKemerdekaan, bulanKemerdekaan, tahunKemerdekaan));
+        }
+        for (int i = 0; i < negaraList.size(); i++) {
+            Negara negara = negaraList.get(i);
+            System.out.println("Negara " + negara.getNama() + ", " + negara.getJenisKepemimpinan());
+            if (negara.getJenisKepemimpinan().equalsIgnoreCase("monarki")) {
+                System.out.println("bersama Raja " + negara.getNamaPemimpin());
+            } else if (negara.getJenisKepemimpinan().equalsIgnoreCase("presiden")) {
+                System.out.println("bersama Presiden " + negara.getNamaPemimpin() + ", Deklarasi Kemerdekaan pada tanggal " + negara.getTanggalKemerdekaan() + " " + bulanMap.get(negara.getBulanKemerdekaan()) + " " + negara.getTahunKemerdekaan());
+            } else {
+                System.out.println("bersama Perdana Menteri " + negara.getNamaPemimpin() + ", Deklarasi Kemerdekaan pada tanggal " + negara.getTanggalKemerdekaan() + " " + bulanMap.get(negara.getBulanKemerdekaan()) + " " + negara.getTahunKemerdekaan());
+            }
+            System.out.println();
+        }
+    }
+}
